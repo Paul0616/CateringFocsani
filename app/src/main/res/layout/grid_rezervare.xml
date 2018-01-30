@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ro.duoline.cateringfocsani.customImageView
+    <ro.duoline.papacatering.customImageView
         android:id="@+id/image_locatie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

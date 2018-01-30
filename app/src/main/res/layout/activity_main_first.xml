@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/cardview_shadow_start_color"
     android:orientation="vertical"
-    tools:context="ro.duoline.cateringfocsani.MainActivityFirst">
+    tools:context="ro.duoline.papacatering.MainActivityFirst">
 
     <FrameLayout
         android:layout_width="match_parent"

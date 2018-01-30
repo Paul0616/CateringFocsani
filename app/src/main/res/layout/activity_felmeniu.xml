@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#121212"
     android:fitsSystemWindows="true"
-    tools:context="ro.duoline.cateringfocsani.FeluriMeniu_Activity">
+    tools:context="ro.duoline.papacatering.FeluriMeniu_Activity">
 
     <RelativeLayout
         android:id="@+id/bara_sus"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/bara_sus"
+
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="TOTAL:"
@@ -64,6 +64,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:text="ANULARE"
             android:textColor="@color/cardview_light_background"
             android:textSize="12sp" />

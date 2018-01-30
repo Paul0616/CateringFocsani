@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="@drawable/bkg_catering_categorii"
-    tools:context="ro.duoline.cateringfocsani.CategoriiMeniu_Activity">
+    tools:context="ro.duoline.papacatering.CategoriiMeniu_Activity">
 
 
     <LinearLayout

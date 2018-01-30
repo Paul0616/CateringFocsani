@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ro.duoline.cateringfocsani">
+    package="ro.duoline.papacatering">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainActivityFirst"
+            android:name="ro.duoline.papacatering.MainActivityFirst"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,51 +23,51 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ConfirmaRezervarea_Activity"
-            android:parentActivityName=".Rezervare_Activity"
+            android:name="ro.duoline.papacatering.ConfirmaRezervarea_Activity"
+            android:parentActivityName="ro.duoline.papacatering.Rezervare_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Rezervare_Activity"
-            android:parentActivityName=".MainActivityFirst"
+            android:name="ro.duoline.papacatering.Rezervare_Activity"
+            android:parentActivityName="ro.duoline.papacatering.MainActivityFirst"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AfisareProfile_Activity"
-            android:parentActivityName=".MainActivity"
+            android:name="ro.duoline.papacatering.AfisareProfile_Activity"
+            android:parentActivityName="ro.duoline.papacatering.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddProfilActivity"
-            android:parentActivityName=".AfisareProfile_Activity"
+            android:name="ro.duoline.papacatering.AddProfilActivity"
+            android:parentActivityName="ro.duoline.papacatering.AfisareProfile_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
-            android:parentActivityName=".MainActivityFirst"
+            android:name="ro.duoline.papacatering.MainActivity"
+            android:parentActivityName="ro.duoline.papacatering.MainActivityFirst"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CategoriiMeniu_Activity"
-            android:parentActivityName=".MainActivity"
+            android:name="ro.duoline.papacatering.CategoriiMeniu_Activity"
+            android:parentActivityName="ro.duoline.papacatering.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".FeluriMeniu_Activity"
-            android:parentActivityName=".CategoriiMeniu_Activity"
+            android:name="ro.duoline.papacatering.FeluriMeniu_Activity"
+            android:parentActivityName="ro.duoline.papacatering.CategoriiMeniu_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ConfirmaComanda_Activity"
-            android:parentActivityName=".FeluriMeniu_Activity"
+            android:name="ro.duoline.papacatering.ConfirmaComanda_Activity"
+            android:parentActivityName="ro.duoline.papacatering.FeluriMeniu_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AfisareAdrese_Activity"
-            android:parentActivityName=".MainActivity"
+            android:name="ro.duoline.papacatering.AfisareAdrese_Activity"
+            android:parentActivityName="ro.duoline.papacatering.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddAdreseActivity"
-            android:parentActivityName=".AfisareAdrese_Activity"
+            android:name="ro.duoline.papacatering.AddAdreseActivity"
+            android:parentActivityName="ro.duoline.papacatering.AfisareAdrese_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".IstoricComenzi_Activity"
+            android:name="ro.duoline.papacatering.IstoricComenzi_Activity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="ro.duoline.papacatering.MainActivity" />
 
-        <receiver android:name="ro.duoline.cateringfocsani.MesajeNotificationReceiver"
+        <receiver android:name="ro.duoline.papacatering.MesajeNotificationReceiver"
             android:enabled="true"
             android:exported="true"/>
     </application>
