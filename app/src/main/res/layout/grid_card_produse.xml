@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/frame_poza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/poza"
+
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/comanda_curenta"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:radius="10dp"
+                android:text="x 0"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/butoane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textPlus"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/semicircle"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textMinus"
+                android:layout_width="25dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center"
+                android:background="@drawable/semicircle"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/texte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/butoane"
+            android:layout_toRightOf="@id/frame_poza"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/denumire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/frame_poza"
+                android:padding="5dp"
+                android:text="Calzone / 30cm bvb h    lhfhv fgr h sh s r f  vdvvcjcdbc jfsdjs fbsjdcdfbdbckdjb "
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/descriere_produs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/denumire"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@id/frame_poza"
+                android:padding="3dp"
+                android:text="Ingrediente: mozzarella, ciuperci, sunca, oregano."
+                android:textColor="@android:color/background_dark"
+                android:textSize="9sp" />
+
+            <TextView
+                android:id="@+id/pret"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descriere_produs"
+                android:layout_toRightOf="@id/frame_poza"
+                android:padding="5dp"
+                android:text="Pret:"
+                android:textAlignment="center" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cerinteSpeciale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/texte"
+            android:layout_alignRight="@+id/texte"
+            android:layout_below="@+id/texte"
+            android:background="@drawable/border_top_bottom"
+            android:padding="5dp"
+            android:text="cerinte speciale" />
+
+        <TextView
+            android:id="@+id/textCod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/cerinteSpeciale"
+            android:layout_below="@+id/texte"
+            android:layout_toRightOf="@+id/frame_poza"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textSize="8sp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

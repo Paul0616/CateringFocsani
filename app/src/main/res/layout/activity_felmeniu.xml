@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:fitsSystemWindows="true"
+    tools:context="ro.duoline.cateringfocsani.FeluriMeniu_Activity">
+
+    <RelativeLayout
+        android:id="@+id/bara_sus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#343434"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="false"
+            app:srcCompat="@android:drawable/ic_menu_revert" />
+
+        <TextView
+            android:id="@+id/confirma_comanda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="CONFIRMA COMANDA"
+            android:textColor="@android:color/holo_orange_light"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bara_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bara_sus">
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/bara_sus"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="TOTAL:"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/anulareBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:text="ANULARE"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/titlu_categorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bara_total"
+        android:background="#343434"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="Categoria"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textNumarProduse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/titlu_categorie"
+        android:layout_alignBottom="@+id/titlu_categorie"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:padding="3dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="10sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/card_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/categorii_recycler_view"
+        android:layout_below="@id/titlu_categorie"
+        android:horizontalSpacing="10dp"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        android:verticalSpacing="10dp" />
+
+    <ProgressBar
+        android:id="@+id/prgBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/categorii_recycler_view"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        tools:visibility="invisible" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/categorii_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="3dp"
+        android:scrollbars="horizontal" />
+
+</RelativeLayout>

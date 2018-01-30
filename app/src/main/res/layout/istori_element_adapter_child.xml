@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="5dp">
+
+        <TextView
+            android:id="@+id/denumireProdusIstoric"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.6"
+            android:elevation="0dp"
+            android:inputType="textMultiLine"
+            android:text="Casa Vranceana Family  / 41 cm"
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/bucatiIstoric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/denumireProdusIstoric"
+            android:layout_toRightOf="@+id/denumireProdusIstoric"
+            android:layout_weight="0.2"
+            android:paddingLeft="5dp"
+            android:text="x 1"
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/pretProduseIstoric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/denumire"
+            android:layout_alignParentRight="true"
+            android:layout_weight="0.2"
+            android:paddingRight="5dp"
+            android:text="50 RON"
+            android:textColor="@android:color/background_dark" />
+
+
+        <TextView
+            android:id="@+id/textCerinteIstoric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/denumireProdusIstoric"
+            android:text="TextView"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

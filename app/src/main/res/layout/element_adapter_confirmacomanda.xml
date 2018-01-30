@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/whitetransparent"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/denumire"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.6"
+                android:elevation="0dp"
+                android:inputType="textMultiLine"
+                android:padding="5dp"
+                android:text="Casa Vranceana Family  / 41 cm"
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bucati"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/denumire"
+                android:layout_toRightOf="@+id/denumire"
+                android:layout_weight="0.2"
+                android:paddingLeft="5dp"
+                android:text="x 1"
+                android:textColor="@android:color/background_dark" />
+
+            <TextView
+                android:id="@+id/pretProduse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/buttonDelete"
+                android:layout_weight="0.2"
+                android:elevation="1dp"
+                android:paddingRight="5dp"
+                android:text="50 RON"
+                android:textColor="@android:color/background_dark" />
+
+            <Button
+                android:id="@+id/buttonDelete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_centerVertical="true"
+                android:layout_weight="3"
+                android:background="@drawable/circle"
+                android:elevation="0dp"
+                android:text="x"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                android:id="@+id/textCerinte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/denumire"
+                android:text="TextView"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="whitetransparent">#64ffffff</color>
+    <color name="dark_gray">#cfcfcf</color>
+    <color name="maro">#7e0b1b</color>
+    <color name="maroinchis">#5a0b09</color>
+</resources>
