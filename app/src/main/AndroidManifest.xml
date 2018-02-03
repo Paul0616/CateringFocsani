@@ -12,9 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service android:name=".InstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity
-            android:name="ro.duoline.papacatering.MainActivityFirst"
+            android:name=".MainActivityFirst"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,53 +28,61 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ro.duoline.papacatering.ConfirmaRezervarea_Activity"
-            android:parentActivityName="ro.duoline.papacatering.Rezervare_Activity"
+            android:name=".ConfirmaRezervarea_Activity"
+            android:parentActivityName=".Rezervare_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.Rezervare_Activity"
-            android:parentActivityName="ro.duoline.papacatering.MainActivityFirst"
+            android:name=".Rezervare_Activity"
+            android:parentActivityName=".MainActivityFirst"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.AfisareProfile_Activity"
-            android:parentActivityName="ro.duoline.papacatering.MainActivity"
+            android:name=".AfisareProfile_Activity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.AddProfilActivity"
-            android:parentActivityName="ro.duoline.papacatering.AfisareProfile_Activity"
+            android:name=".AddProfilActivity"
+            android:parentActivityName=".AfisareProfile_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.MainActivity"
-            android:parentActivityName="ro.duoline.papacatering.MainActivityFirst"
+            android:name=".MainActivity"
+            android:parentActivityName=".MainActivityFirst"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.CategoriiMeniu_Activity"
-            android:parentActivityName="ro.duoline.papacatering.MainActivity"
+            android:name=".CategoriiMeniu_Activity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.FeluriMeniu_Activity"
-            android:parentActivityName="ro.duoline.papacatering.CategoriiMeniu_Activity"
+            android:name=".FeluriMeniu_Activity"
+            android:parentActivityName=".CategoriiMeniu_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.ConfirmaComanda_Activity"
-            android:parentActivityName="ro.duoline.papacatering.FeluriMeniu_Activity"
+            android:name=".ConfirmaComanda_Activity"
+            android:parentActivityName=".FeluriMeniu_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.AfisareAdrese_Activity"
-            android:parentActivityName="ro.duoline.papacatering.MainActivity"
+            android:name=".AfisareAdrese_Activity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.AddAdreseActivity"
-            android:parentActivityName="ro.duoline.papacatering.AfisareAdrese_Activity"
+            android:name=".AddAdreseActivity"
+            android:parentActivityName=".AfisareAdrese_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="ro.duoline.papacatering.IstoricComenzi_Activity"
-            android:screenOrientation="portrait"
-            android:parentActivityName="ro.duoline.papacatering.MainActivity" />
+            android:name=".IstoricComenzi_Activity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
 
-        <receiver android:name="ro.duoline.papacatering.MesajeNotificationReceiver"
+        <receiver
+            android:name=".MesajeNotificationReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
+
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

@@ -51,7 +51,7 @@ public class Rezervare_Activity extends AppCompatActivity implements View.OnClic
     public ArrayList<String> al;
     private ProgressBar mLoadingIndicator;
     private static final int RESTAURANT_LOADER_ID = 45;
-    private final static String RESTAURANTE_URL_BASE = "http://www.ondesign.ro";
+    private final static String RESTAURANTE_URL_BASE = "http://www.duoline.ro/catering";
     private final static String RESTAURANTE_FILE_PHP_QUERY = "getRestauranteRezervare.php";
 
     @Override

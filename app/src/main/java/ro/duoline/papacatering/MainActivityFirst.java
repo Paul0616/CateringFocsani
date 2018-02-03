@@ -24,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,7 +47,7 @@ import ro.duoline.papacatering.data.RestauranteTasks;
 public class MainActivityFirst extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>{
 
     private static final int RESTAURANT_LOADER_ID = 35;
-    private final static String RESTAURANTE_URL_BASE = "http://www.ondesign.ro";
+    private final static String RESTAURANTE_URL_BASE = "https://www.duoline.ro/catering";
     private final static String RESTAURANTE_FILE_PHP_QUERY = "getRestaurante.php";
     private final static String HEADER_RECYCLER_VIEW = "Unde poti\nComanda\nMancare";
     private ImageView pozaFundal;
@@ -71,8 +73,8 @@ public class MainActivityFirst extends AppCompatActivity implements LoaderManage
         headerRecyclerView.setHasFixedSize(true);
         pozaFundal = (ImageView) findViewById(R.id.imageView2);
 
-        startAlarmManager();
-
+        //startAlarmManager();
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
     }
 
     @Override

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "903597456353",
+    "firebase_url": "https://cateringfocsani.firebaseio.com",
+    "project_id": "cateringfocsani",
+    "storage_bucket": "cateringfocsani.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903597456353:android:98949b199911786a",
+        "android_client_info": {
+          "package_name": "ro.duoline.papacatering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903597456353-lmv6fokfvpams47lhkfj90fgl21lu73n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.duoline.papacatering",
+            "certificate_hash": "745263d42be8b9425c14ffcb66c7373bfb0d7617"
+          }
+        },
+        {
+          "client_id": "903597456353-msguq8u7554bpuq313qeoqnfn2schmbj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCxzHifF_ctDY7ubESQ1CHSHF2eNNP-wQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903597456353-msguq8u7554bpuq313qeoqnfn2schmbj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
