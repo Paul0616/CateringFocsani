@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class RestauranteDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "restaurante.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
 
     public RestauranteDbHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,7 +31,11 @@ public class RestauranteDbHelper extends SQLiteOpenHelper {
                 RestauranteContract.RestauranteEntry.COLUMN_DATABASE + " TEXT NOT NULL, " +
                 RestauranteContract.RestauranteEntry.COLUMN_USER + " TEXT NOT NULL, " +
                 RestauranteContract.RestauranteEntry.COLUMN_PASS + " TEXT NOT NULL, " +
-                RestauranteContract.RestauranteEntry.COLUMN_IP + " TEXT NOT NULL" +
+                RestauranteContract.RestauranteEntry.COLUMN_IP + " TEXT NOT NULL," +
+                RestauranteContract.RestauranteEntry.COLUMN_START_CATERING + " TEXT NOT NULL," +
+                RestauranteContract.RestauranteEntry.COLUMN_END_CATERING + " TEXT NOT NULL," +
+                RestauranteContract.RestauranteEntry.COLUMN_START_REZERVARI + " TEXT NOT NULL," +
+                RestauranteContract.RestauranteEntry.COLUMN_END_REZERVARI + " TEXT NOT NULL" +
                 ");";
         db.execSQL(SQL_CREATE_RESTAURANTE_TABLE);
         final String SQL_CREATE_MESAJE_TABLE = "CREATE TABLE " +

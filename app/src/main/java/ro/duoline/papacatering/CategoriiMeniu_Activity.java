@@ -102,7 +102,7 @@ public class CategoriiMeniu_Activity extends AppCompatActivity implements  GetMe
     public void updateLists_Resume(int denumiriSauPoze, List<String> A, List<String> B, List<String> C){
         if(denumiriSauPoze == 1) {
             listNumeCategorii = A;
-            AsyncTask<String, Void, List<String>> execute1 = new GetMeniuStringLists(this, 2).execute("","http://www.ondesign.ro");
+            AsyncTask<String, Void, List<String>> execute1 = new GetMeniuStringLists(this, 2).execute("","http://www.duoline.ro/catering");
         }
         if(denumiriSauPoze == 2) {
             listToatePozeleCategoriilor = B;

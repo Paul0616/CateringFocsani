@@ -290,6 +290,10 @@ public class MainActivityFirst extends AppCompatActivity implements LoaderManage
                         cv.put(RestauranteContract.RestauranteEntry.COLUMN_USER, jArray.getJSONObject(i).getString("dbname"));
                         cv.put(RestauranteContract.RestauranteEntry.COLUMN_PASS, jArray.getJSONObject(i).getString("passw"));
                         cv.put(RestauranteContract.RestauranteEntry.COLUMN_IP, jArray.getJSONObject(i).getString("ip"));
+                        cv.put(RestauranteContract.RestauranteEntry.COLUMN_START_CATERING, jArray.getJSONObject(i).getString("start_catering"));
+                        cv.put(RestauranteContract.RestauranteEntry.COLUMN_END_CATERING, jArray.getJSONObject(i).getString("end_catering"));
+                        cv.put(RestauranteContract.RestauranteEntry.COLUMN_START_REZERVARI, jArray.getJSONObject(i).getString("start_rezervari"));
+                        cv.put(RestauranteContract.RestauranteEntry.COLUMN_END_REZERVARI, jArray.getJSONObject(i).getString("end_rezervari"));
                         list.add(cv);
                     }
 

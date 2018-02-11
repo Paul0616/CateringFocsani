@@ -22,6 +22,7 @@ public class RestauranteTasks {
     public static JSONArray getVectorScor(JSONArray jArray){
         JSONArray jarrayScor = new JSONArray();
         Cursor cursor = getAllRestaurante();
+        //int x = cursor.getCount();
         try {
             for (int i = 0; i < jArray.length(); i++) {
                 cursor.moveToPosition(i);
@@ -44,10 +45,14 @@ public class RestauranteTasks {
     synchronized public static List<ContentValues> syncRestauranteDB(Context context, List<ContentValues> listaRestauranteDePeServer){
         initDatabase(context);
         Cursor cursor = getAllRestaurante();
+        int x = cursor.getCount();
         RestauranteTasks.stergeRestaurante(cursor,listaRestauranteDePeServer); //sterg din BD restaurantele care sunt in plus fata de cele de pe server
+        x = cursor.getCount();
         cursor.close();
         cursor = RestauranteTasks.getAllRestaurante();
+        x = cursor.getCount();
         listaRestauranteDePeServer = RestauranteTasks.adaugaRestaurante(cursor, listaRestauranteDePeServer); //adaug in BD restaurantele care lipsesc comparativ cu cele de pe server
+
         cursor.close();
         return listaRestauranteDePeServer;
     }
@@ -193,6 +198,14 @@ public class RestauranteTasks {
                         listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_PASS).toString());
                 cv.put(RestauranteContract.RestauranteEntry.COLUMN_IP,
                         listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_IP).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_START_CATERING,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_START_CATERING).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_END_CATERING,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_END_CATERING).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_START_REZERVARI,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_START_REZERVARI).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_END_REZERVARI,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_END_REZERVARI).toString());
                 mDb.update(RestauranteContract.RestauranteEntry.TABLE_NAME, cv,
                         RestauranteContract.RestauranteEntry.COLUMN_REATAURANT_ID + "=" + cursor.getInt(cursor.getColumnIndex(RestauranteContract.RestauranteEntry.COLUMN_REATAURANT_ID)),
                         null);
@@ -232,6 +245,14 @@ public class RestauranteTasks {
                         listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_PASS).toString());
                 cv.put(RestauranteContract.RestauranteEntry.COLUMN_IP,
                         listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_IP).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_START_CATERING,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_START_CATERING).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_END_CATERING,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_END_CATERING).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_START_REZERVARI,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_START_REZERVARI).toString());
+                cv.put(RestauranteContract.RestauranteEntry.COLUMN_END_REZERVARI,
+                        listaIncarcata.get(i).get(RestauranteContract.RestauranteEntry.COLUMN_END_REZERVARI).toString());
                 mDb.insert(RestauranteContract.RestauranteEntry.TABLE_NAME, null, cv);
             }
         }

@@ -2,6 +2,8 @@ package ro.duoline.papacatering;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,7 +26,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -32,6 +37,9 @@ import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePick
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import ro.duoline.papacatering.data.RestauranteContract;
+import ro.duoline.papacatering.data.RestauranteDbHelper;
 
 /**
  * Created by Paul on 27.05.2017.
@@ -53,6 +61,8 @@ public class Rezervare_Activity extends AppCompatActivity implements View.OnClic
     private static final int RESTAURANT_LOADER_ID = 45;
     private final static String RESTAURANTE_URL_BASE = "http://www.duoline.ro/catering";
     private final static String RESTAURANTE_FILE_PHP_QUERY = "getRestauranteRezervare.php";
+
+    private Calendar start_rezervare, end_rezervare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +98,10 @@ public class Rezervare_Activity extends AppCompatActivity implements View.OnClic
         pers8plus.setOnClickListener(this);
         backButR.setOnClickListener(this);
         recyclerView = (RecyclerView)findViewById(R.id.rez_recycler_view);
+        getOreRezervare();
+        SimpleDateFormat ft = new SimpleDateFormat("HH:mm");
+        alege.setText("Alege ziua si ora (intre " + ft.format(start_rezervare.getTime()) + " si " +
+                ft.format(end_rezervare.getTime()) + ")");
         makeURLConnection();
     }
 
@@ -150,6 +164,7 @@ public class Rezervare_Activity extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.alege:
+                final SimpleDateFormat ft = new SimpleDateFormat("HH:mm");
                 if(setRezervare.getDate() != null){
                     new SingleDateAndTimePickerDialog.Builder(context)
                             .mustBeOnFuture()
@@ -159,9 +174,16 @@ public class Rezervare_Activity extends AppCompatActivity implements View.OnClic
                             .listener(new SingleDateAndTimePickerDialog.Listener() {
                                 @Override
                                 public void onDateSelected(Date date) {
-                                    setRezervare.setDate(date);
-                                    sumar.setText(setRezervare.getFinalString());
-
+                                    if (rezervareIsInRange(start_rezervare, end_rezervare, date)) {
+                                        setRezervare.setDate(date);
+                                        sumar.setText(setRezervare.getFinalString());
+                                    } else {
+                                        Toast.makeText(Rezervare_Activity.this,
+                                                "Programul restaurantului este:\n" +
+                                                        ft.format(start_rezervare.getTime()) + " - " +
+                                                        ft.format(end_rezervare.getTime()) + "\n"
+                                                        + "Alege o ora in acest interval.", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }).display();
                 } else {
@@ -172,8 +194,16 @@ public class Rezervare_Activity extends AppCompatActivity implements View.OnClic
                             .listener(new SingleDateAndTimePickerDialog.Listener() {
                                 @Override
                                 public void onDateSelected(Date date) {
-                                    setRezervare.setDate(date);
-                                    sumar.setText(setRezervare.getFinalString());
+                                    if (rezervareIsInRange(start_rezervare, end_rezervare, date)) {
+                                        setRezervare.setDate(date);
+                                        sumar.setText(setRezervare.getFinalString());
+                                    } else {
+                                        Toast.makeText(Rezervare_Activity.this,
+                                                "Programul restaurantului este:\n" +
+                                                        ft.format(start_rezervare.getTime()) + " - " +
+                                                        ft.format(end_rezervare.getTime()) + "\n"
+                                                        + "Alege o ora in acest interval.", Toast.LENGTH_SHORT).show();
+                                    }
 
                                 }
                             }).display();
@@ -182,6 +212,37 @@ public class Rezervare_Activity extends AppCompatActivity implements View.OnClic
             default:
                 break;
         }
+    }
+
+    private Boolean rezervareIsInRange(Calendar start_rezervare, Calendar end_rezervare, Date curent){
+        Calendar now = Calendar.getInstance();
+        now.setTime(curent);
+        now.set(start_rezervare.get(Calendar.YEAR), start_rezervare.get(Calendar.MONTH), start_rezervare.get(Calendar.DAY_OF_MONTH));
+        if ((now.getTimeInMillis() >= start_rezervare.getTimeInMillis()) && (now.getTimeInMillis() < end_rezervare.getTimeInMillis())) return true;
+        else return false;
+    }
+    private void getOreRezervare(){
+        RestauranteDbHelper dbHelper = new RestauranteDbHelper(this);
+        SQLiteDatabase mDb = dbHelper.getWritableDatabase();
+        String selection = RestauranteContract.RestauranteEntry.COLUMN_REATAURANT_ID + "=" + Integer.toString(id);
+        Cursor cursor = mDb.query(RestauranteContract.RestauranteEntry.TABLE_NAME, null, selection, null, null, null, null);
+        cursor.moveToFirst();
+        start_rezervare = Calendar.getInstance();
+        end_rezervare = Calendar.getInstance();
+
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        String start = cursor.getString(cursor.getColumnIndex(RestauranteContract.RestauranteEntry.COLUMN_START_REZERVARI));
+        String end = cursor.getString(cursor.getColumnIndex(RestauranteContract.RestauranteEntry.COLUMN_END_REZERVARI));
+        try{
+            Date start_cat = format.parse(start);
+            Date end_cat = format.parse(end);
+            start_rezervare.setTime(start_cat);
+            end_rezervare.setTime(end_cat);
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+
+        cursor.close();
     }
 
     private void makeURLConnection(){

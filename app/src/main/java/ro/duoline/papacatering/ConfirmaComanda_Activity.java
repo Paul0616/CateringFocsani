@@ -14,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -27,7 +28,11 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import ro.duoline.papacatering.data.RestauranteContract;
 import ro.duoline.papacatering.data.RestauranteDbHelper;
@@ -51,6 +56,7 @@ public class ConfirmaComanda_Activity extends AppCompatActivity {
 
     private static String MESAJ_COMANDA_TRIMISA;
     private int valoareMinima;
+    private Calendar start_catering, end_catering;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +83,21 @@ public class ConfirmaComanda_Activity extends AppCompatActivity {
         cursor.moveToFirst();
         MESAJ_COMANDA_TRIMISA = cursor.getString(cursor.getColumnIndex(RestauranteContract.RestauranteEntry.COLUMN_MESAJ_CATERING));
         valoareMinima = cursor.getInt(cursor.getColumnIndex(RestauranteContract.RestauranteEntry.COLUMN_VALOARE_MINIMA_LIVRARE));
+        start_catering = Calendar.getInstance();
+        end_catering = Calendar.getInstance();
+
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        String start = cursor.getString(cursor.getColumnIndex(RestauranteContract.RestauranteEntry.COLUMN_START_CATERING));
+        String end = cursor.getString(cursor.getColumnIndex(RestauranteContract.RestauranteEntry.COLUMN_END_CATERING));
+        try{
+            Date start_cat = format.parse(start);
+            Date end_cat = format.parse(end);
+            start_catering.setTime(start_cat);
+            end_catering.setTime(end_cat);
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+
         cursor.close();
         findViewById(R.id.backButton1).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,13 +128,17 @@ public class ConfirmaComanda_Activity extends AppCompatActivity {
             public void onClick(View v){
                 String adr = adresa.get(0) + " " + adresa.get(1);
                 String prs = profil.get(0) + "|" + profil.get(1);
-
+                SimpleDateFormat ft = new SimpleDateFormat("HH:mm");
                 if(adr.length() == 1 || prs.length() == 3){
                     createAlertDialogBuilder(new AlertDialog.Builder(context,R.style.RedTheme), "Nu poti trimite comanda daca nu ai ales/adaugat o adresa de livrare si numarul de telefon al unei persoane de contact!", false).show();
                 } else if(valoriConfirmare.size() == 0){
                     createAlertDialogBuilder(new AlertDialog.Builder(context,R.style.RedTheme), "Nu ai ales nimic. Comanda ceva si apoi trimite din nou.", false).show();
                 } else if(totalGeneral(tg.getText().toString()) < valoareMinima){
                     createAlertDialogBuilder(new AlertDialog.Builder(context,R.style.RedTheme), "Valoarea comenzii trebuie sa fie de cel putin " + valoareMinima + " RON.", false).show();
+                } else if(!isCateringProgramAvailable(start_catering, end_catering)){
+                    createAlertDialogBuilder(new AlertDialog.Builder(context,R.style.RedTheme), "Programului de catering este\n de la " +
+                            ft.format(start_catering.getTime()) + " la " +
+                            ft.format(end_catering.getTime()) + "\nMultumim pentru intelegere.", false).show();
                 } else {
                     new HttpAsyncTask().execute(al.get(3), tg.getText().toString());
                 }
@@ -153,6 +178,13 @@ public class ConfirmaComanda_Activity extends AppCompatActivity {
 
         adapter = new ConfirmaComandaAdapter(getApplicationContext(), tg, valoriConfirmare);
         recyclerView.setAdapter(adapter);
+    }
+
+    private Boolean isCateringProgramAvailable(Calendar start_catering, Calendar end_catering){
+        Calendar now = Calendar.getInstance();
+        now.set(start_catering.get(Calendar.YEAR), start_catering.get(Calendar.MONTH), start_catering.get(Calendar.DAY_OF_MONTH));
+        if ((now.getTimeInMillis() >= start_catering.getTimeInMillis()) && (now.getTimeInMillis() <= end_catering.getTimeInMillis())) return true;
+        else return false;
     }
 
     private JSONArray makeJson(String adr, String prs, String tg){

@@ -22,6 +22,10 @@ public class RestauranteContract {
         public static final String COLUMN_USER = "dbname";
         public static final String COLUMN_PASS = "passw";
         public static final String COLUMN_IP = "ip";
+        public static final String COLUMN_START_CATERING = "start_catering";
+        public static final String COLUMN_END_CATERING = "end_catering";
+        public static final String COLUMN_START_REZERVARI = "start_rezervari";
+        public static final String COLUMN_END_REZERVARI= "end_rezervari";
 
     }
 
